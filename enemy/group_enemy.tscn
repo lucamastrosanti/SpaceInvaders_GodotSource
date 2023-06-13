@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://clifjk7l1anpr"]
+
+[ext_resource type="Script" path="res://enemy/group_enemy.gd" id="1_q17xy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fokj2"]
+
+[node name="group_enemy" type="Area2D" groups=["group_enemy"]]
+script = ExtResource("1_q17xy")
+
+[node name="group_enemy_CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fokj2")
+
+[node name="SliceTimer" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="SliceTimer" to="." method="_on_slice_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

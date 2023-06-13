@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://dep02g6g2ecdl"]
+
+[ext_resource type="Script" path="res://hud/pauseHud.gd" id="1_1tvvy"]
+[ext_resource type="FontFile" uid="uid://bqyij6n0qhgb2" path="res://hud/3Dventure.ttf" id="2_ddbsn"]
+[ext_resource type="Texture2D" uid="uid://cioc1k0vkrmsb" path="res://hud/resume button.png" id="3_18vrs"]
+[ext_resource type="Texture2D" uid="uid://xuinodxwbgqq" path="res://hud/quit button.png" id="4_6l3ow"]
+[ext_resource type="FontFile" uid="uid://oyx0qe5uwtfq" path="res://hud/8-bit Arcade In.ttf" id="5_tm0i8"]
+
+[node name="Pause" type="CanvasLayer"]
+script = ExtResource("1_1tvvy")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.65098, 0.623529, 0.576471, 0.835294)
+
+[node name="ResumeButton" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.312
+anchor_top = 0.432
+anchor_right = 0.486
+anchor_bottom = 0.5
+offset_left = 0.575989
+offset_top = 0.0639954
+offset_right = 86.128
+offset_bottom = 21.0
+scale = Vector2(0.7, 0.7)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_ddbsn")
+theme_override_font_sizes/font_size = 60
+text = " resume"
+icon = ExtResource("3_18vrs")
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitButton" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.514
+anchor_top = 0.42
+anchor_right = 0.668
+anchor_bottom = 0.506
+offset_left = -0.127991
+offset_top = -0.160004
+offset_right = -0.536072
+offset_bottom = 0.111969
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_ddbsn")
+theme_override_font_sizes/font_size = 50
+text = " quit"
+icon = ExtResource("4_6l3ow")
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="QuitButton"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 242.0
+offset_bottom = 79.0
+theme_override_fonts/font = ExtResource("5_tm0i8")
+theme_override_font_sizes/font_size = 20
+text = "you'll lose your progress"
+
+[node name="PassagesTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="timeout" from="PassagesTimer" to="." method="_on_passages_timer_timeout"]

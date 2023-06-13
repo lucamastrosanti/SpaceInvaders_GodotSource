@@ -1,0 +1,375 @@
+[gd_scene load_steps=22 format=3 uid="uid://cvovbn00tkjyj"]
+
+[ext_resource type="Script" path="res://hud/StartHud.gd" id="1_ukmd8"]
+[ext_resource type="FontFile" uid="uid://bqyij6n0qhgb2" path="res://hud/3Dventure.ttf" id="2_4pdvy"]
+[ext_resource type="Resource" uid="uid://d2thmn4ekgs8g" path="res://username.tres" id="2_v65lr"]
+[ext_resource type="Script" path="res://hud/InfiniteScrollingBackground.gd" id="3_fug0t"]
+[ext_resource type="FontFile" uid="uid://oyx0qe5uwtfq" path="res://hud/8-bit Arcade In.ttf" id="3_j0qa5"]
+[ext_resource type="Texture2D" uid="uid://b684iwo35nk4n" path="res://hud/background.png" id="3_yb6f6"]
+[ext_resource type="Texture2D" uid="uid://dnat42nrbg7pl" path="res://ufo/ufo.png" id="4_6062o"]
+[ext_resource type="Texture2D" uid="uid://kp0upncmg4f2" path="res://enemy/enemy2_1.png" id="4_mo647"]
+[ext_resource type="Texture2D" uid="uid://b4acxmdgr1iet" path="res://enemy/enemy1_1.png" id="5_1e0rh"]
+[ext_resource type="Texture2D" uid="uid://n5ewyylsrikt" path="res://enemy/enemy3_2.png" id="6_rv6i6"]
+[ext_resource type="Texture2D" uid="uid://ux4f2da0aq7n" path="res://enemy/enemy3_1.png" id="7_084e1"]
+[ext_resource type="Texture2D" uid="uid://gu0hjwm4owpx" path="res://enemy/enemy2_2.png" id="8_1ocn7"]
+[ext_resource type="Texture2D" uid="uid://xuinodxwbgqq" path="res://hud/quit button.png" id="8_kico3"]
+[ext_resource type="Texture2D" uid="uid://dymtan18yehpi" path="res://best.png" id="9_2lpmi"]
+[ext_resource type="Texture2D" uid="uid://c5cuqmue17250" path="res://enemy/enemy1_2.png" id="10_w5kky"]
+[ext_resource type="Texture2D" uid="uid://bw0t1hjd3nfqb" path="res://credits/leti_sprite.png" id="11_xfmis"]
+[ext_resource type="Texture2D" uid="uid://bficno3w1s4xt" path="res://credits/luca_sprite.png" id="12_wwvik"]
+[ext_resource type="AudioStream" uid="uid://n7iw0bwggmmn" path="res://music/musiche/start hud.mp3" id="18_bk7bc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o2hvq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_084e1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rv6i6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6sa8e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_mo647")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1ocn7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_emrpu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_1e0rh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_w5kky")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="StartHud" type="CanvasLayer"]
+script = ExtResource("1_ukmd8")
+nickname = ExtResource("2_v65lr")
+metadata/_edit_vertical_guides_ = [2304.0]
+
+[node name="InfiniteScrollingBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("3_fug0t")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="InfiniteScrollingBackground"]
+motion_mirroring = Vector2(1600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="InfiniteScrollingBackground/ParallaxLayer"]
+position = Vector2(584, 320)
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("3_yb6f6")
+
+[node name="NameHud" type="CanvasLayer" parent="."]
+
+[node name="LineEdit" type="LineEdit" parent="NameHud"]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -147.0
+offset_top = 255.0
+offset_right = 147.0
+offset_bottom = 303.0
+grow_horizontal = 2
+theme_override_colors/caret_color = Color(0.164706, 0.407843, 1, 1)
+theme_override_colors/selection_color = Color(1, 0.631373, 0, 1)
+theme_override_fonts/font = ExtResource("2_4pdvy")
+theme_override_font_sizes/font_size = 30
+alignment = 1
+max_length = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="NameButton" type="Button" parent="NameHud"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.5
+offset_top = -4.0
+offset_right = 97.5
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_pressed_color = Color(0.164706, 0.407843, 1, 1)
+theme_override_colors/font_hover_color = Color(0.164706, 0.407843, 1, 1)
+theme_override_fonts/font = ExtResource("2_4pdvy")
+theme_override_font_sizes/font_size = 40
+text = "START"
+metadata/_edit_use_anchors_ = true
+
+[node name="NameLabel" type="Label" parent="NameHud"]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -186.5
+offset_top = 210.0
+offset_right = 186.5
+offset_bottom = 242.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_4pdvy")
+theme_override_font_sizes/font_size = 30
+text = "Insert Your name here
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Error" type="Label" parent="NameHud"]
+visible = false
+texture_filter = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.247
+anchor_right = 0.5
+anchor_bottom = 0.247
+offset_left = -168.0
+offset_top = 255.944
+offset_right = 175.0
+offset_bottom = 277.944
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.780392, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_4pdvy")
+theme_override_font_sizes/font_size = 22
+text = "*You need to choose a username*"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="CreditsButton" type="Button" parent="Menu"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.913654
+anchor_right = 0.111
+anchor_bottom = 1.0
+offset_top = -0.0479126
+offset_right = 0.127991
+offset_bottom = 0.00012207
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_j0qa5")
+theme_override_font_sizes/font_size = 30
+text = "Credits"
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" type="Button" parent="Menu"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -104.0
+offset_right = 169.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_pressed_color = Color(1, 0.631373, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.631373, 0, 1)
+theme_override_fonts/font = ExtResource("2_4pdvy")
+theme_override_font_sizes/font_size = 50
+text = "PLAY HERE"
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="Menu"]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -396.0
+offset_top = 100.0
+offset_right = 396.0
+offset_bottom = 202.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_4pdvy")
+theme_override_font_sizes/font_size = 50
+text = "The SPACE INVADERS game
+with a new style"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreIndex" type="Label" parent="Menu"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = 46.0
+offset_right = 160.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_4pdvy")
+theme_override_font_sizes/font_size = 40
+text = "= 30 points
+= 20 points
+= 10 points
+= ? Mystery"
+horizontal_alignment = 1
+
+[node name="enemy3" type="AnimatedSprite2D" parent="Menu/ScoreIndex"]
+texture_filter = 1
+position = Vector2(-41, 26)
+scale = Vector2(3.8, 3.8)
+sprite_frames = SubResource("SpriteFrames_o2hvq")
+speed_scale = 0.2
+
+[node name="enemy2" type="AnimatedSprite2D" parent="Menu/ScoreIndex"]
+texture_filter = 1
+position = Vector2(-38, 71)
+scale = Vector2(3.8, 3.8)
+sprite_frames = SubResource("SpriteFrames_6sa8e")
+speed_scale = 0.2
+
+[node name="enemy1" type="AnimatedSprite2D" parent="Menu/ScoreIndex"]
+texture_filter = 1
+position = Vector2(-42, 113)
+scale = Vector2(3.8, 3.8)
+sprite_frames = SubResource("SpriteFrames_emrpu")
+speed_scale = 0.2
+
+[node name="ufo2" type="Sprite2D" parent="Menu/ScoreIndex"]
+texture_filter = 1
+position = Vector2(-43, 148)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_6062o")
+
+[node name="LeaderboardButton" type="Button" parent="Menu"]
+texture_filter = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -216.0
+offset_top = -472.0
+offset_right = -93.0
+offset_bottom = -359.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 0.247873
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("2_4pdvy")
+text = "
+
+
+
+
+
+Leader board"
+icon = ExtResource("9_2lpmi")
+flat = true
+icon_alignment = 1
+
+[node name="Credits" type="CanvasLayer" parent="."]
+
+[node name="CreditsText" type="Label" parent="Credits"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -349.0
+offset_top = -244.0
+offset_right = 349.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_j0qa5")
+theme_override_font_sizes/font_size = 40
+text = "Game Directors/Programmers
+Luca Mastrosanti, Letizia Laurino
+
+Game Designers
+Letizia Laurino, Luca Mastrosanti
+
+Additional support
+Lorenzo Di Carlantonio
+
+Made in AIDAPT S.R.L.during a PCTO stage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EscButton" type="Button" parent="Credits"]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = -0.263889
+anchor_right = 0.056
+anchor_bottom = -0.263889
+offset_top = 171.0
+offset_right = -27.512
+offset_bottom = 208.0
+scale = Vector2(1.7, 1.7)
+theme_override_fonts/font = ExtResource("2_4pdvy")
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("8_kico3")
+metadata/_edit_use_anchors_ = true
+
+[node name="Leti" type="TextureRect" parent="Credits"]
+texture_filter = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -256.0
+offset_right = 16.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("11_xfmis")
+
+[node name="Luca" type="TextureRect" parent="Credits"]
+texture_filter = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -256.0
+offset_right = 320.0
+grow_vertical = 0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("12_wwvik")
+
+[node name="PassageTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="start hud" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_bk7bc")
+
+[connection signal="pressed" from="NameHud/NameButton" to="." method="_on_name_button_pressed"]
+[connection signal="pressed" from="Menu/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="Menu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Menu/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]
+[connection signal="pressed" from="Credits/EscButton" to="." method="_on_esc_button_pressed"]
+[connection signal="timeout" from="PassageTimer" to="." method="_on_passage_timer_timeout"]

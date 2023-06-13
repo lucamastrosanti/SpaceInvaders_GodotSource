@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqfrqp3er6lo0"]
+
+[ext_resource type="Script" path="res://hud/game_over.gd" id="1_7ho2c"]
+[ext_resource type="FontFile" uid="uid://bqyij6n0qhgb2" path="res://hud/3Dventure.ttf" id="1_igyn8"]
+[ext_resource type="Texture2D" uid="uid://xuinodxwbgqq" path="res://hud/quit button.png" id="3_tbfpe"]
+[ext_resource type="Texture2D" uid="uid://w0wobp7jg7cm" path="res://hud/restart.png" id="4_603o8"]
+[ext_resource type="AudioStream" uid="uid://ei5oux24ahgd" path="res://music/musiche/game_over.mp3" id="5_nrrkn"]
+
+[node name="Game_over" type="CanvasLayer"]
+script = ExtResource("1_7ho2c")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="gameover" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -92.0
+offset_right = 168.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_igyn8")
+theme_override_font_sizes/font_size = 50
+text = "game over :("
+horizontal_alignment = 1
+
+[node name="Menu" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = -12.0
+offset_right = -48.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_igyn8")
+theme_override_font_sizes/font_size = 50
+text = " Menu"
+icon = ExtResource("3_tbfpe")
+flat = true
+
+[node name="Restart" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 272.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_igyn8")
+theme_override_font_sizes/font_size = 50
+text = "restart"
+icon = ExtResource("4_603o8")
+flat = true
+
+[node name="game_over" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_nrrkn")
+
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]

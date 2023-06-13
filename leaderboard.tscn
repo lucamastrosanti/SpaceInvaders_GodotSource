@@ -1,0 +1,95 @@
+[gd_scene load_steps=9 format=3 uid="uid://x30h1fhbc800"]
+
+[ext_resource type="Script" path="res://leaderboard.gd" id="1_lnse0"]
+[ext_resource type="Resource" uid="uid://lbtf4epl4ast" path="res://Leaderboard.tres" id="2_lp0bq"]
+[ext_resource type="Script" path="res://hud/InfiniteScrollingBackground.gd" id="3_50q30"]
+[ext_resource type="Texture2D" uid="uid://b684iwo35nk4n" path="res://hud/background.png" id="4_7mhh4"]
+[ext_resource type="FontFile" uid="uid://bqyij6n0qhgb2" path="res://hud/3Dventure.ttf" id="4_ipady"]
+[ext_resource type="Texture2D" uid="uid://xuinodxwbgqq" path="res://hud/quit button.png" id="5_4gaj2"]
+[ext_resource type="Texture2D" uid="uid://dymtan18yehpi" path="res://best.png" id="7_w8lvd"]
+[ext_resource type="AudioStream" uid="uid://n7iw0bwggmmn" path="res://music/musiche/start hud.mp3" id="8_g42tx"]
+
+[node name="Leaderboard" type="CanvasLayer"]
+script = ExtResource("1_lnse0")
+leaderboard = ExtResource("2_lp0bq")
+
+[node name="InfiniteScrollingBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("3_50q30")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="InfiniteScrollingBackground"]
+motion_mirroring = Vector2(1600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="InfiniteScrollingBackground/ParallaxLayer"]
+position = Vector2(584, 320)
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("4_7mhh4")
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_top = 24.0
+offset_right = 125.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_ipady")
+theme_override_font_sizes/font_size = 50
+text = "CLASSIFICA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = 212.0
+offset_right = 57.0
+offset_bottom = 249.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_ipady")
+theme_override_font_sizes/font_size = 30
+text = "quit"
+icon = ExtResource("5_4gaj2")
+
+[node name="Container" type="ScrollContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -468.0
+offset_top = -212.0
+offset_right = 468.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 312.0
+offset_top = 48.0
+offset_right = 398.0
+offset_bottom = 128.0
+rotation = -0.520098
+texture = ExtResource("7_w8lvd")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 760.0
+offset_top = 7.99997
+offset_right = 846.0
+offset_bottom = 88.0
+rotation = 0.43161
+texture = ExtResource("7_w8lvd")
+
+[node name="leaderboard" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_g42tx")
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

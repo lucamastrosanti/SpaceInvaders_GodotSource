@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c8irr072rb1bu"
+path="res://.godot/imported/ship lost.mp3-66666df34327b660e47cbb25b854bf7a.mp3str"
+
+[deps]
+
+source_file="res://music/musiche/ship lost.mp3"
+dest_files=["res://.godot/imported/ship lost.mp3-66666df34327b660e47cbb25b854bf7a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

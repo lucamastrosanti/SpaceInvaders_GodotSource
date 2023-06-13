@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://o3b0qf6pp73f"]
+
+[ext_resource type="Script" path="res://enemy/enemy.gd" id="1_bvpyi"]
+[ext_resource type="Texture2D" uid="uid://b4acxmdgr1iet" path="res://enemy/enemy1_1.png" id="2_hj64c"]
+[ext_resource type="Texture2D" uid="uid://c5cuqmue17250" path="res://enemy/enemy1_2.png" id="3_60jkf"]
+[ext_resource type="Texture2D" uid="uid://kp0upncmg4f2" path="res://enemy/enemy2_1.png" id="4_abfc3"]
+[ext_resource type="Texture2D" uid="uid://gu0hjwm4owpx" path="res://enemy/enemy2_2.png" id="5_8mul7"]
+[ext_resource type="Texture2D" uid="uid://ux4f2da0aq7n" path="res://enemy/enemy3_1.png" id="6_m6u3p"]
+[ext_resource type="Texture2D" uid="uid://n5ewyylsrikt" path="res://enemy/enemy3_2.png" id="7_nk542"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hf8k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hj64c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_60jkf")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_abfc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8mul7")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_m6u3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nk542")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0nuvn"]
+size = Vector2(24.6202, 32.3581)
+
+[node name="enemy" type="Area2D" groups=["enemy"]]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_bvpyi")
+size = Vector2(10, 10)
+
+[node name="enemy_Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 3.6)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_2hf8k")
+animation = &"1"
+speed_scale = 0.2
+
+[node name="enemy_CollisionShape" type="CollisionShape2D" parent="." groups=["EnemyCollisionShapes"]]
+position = Vector2(-0.666666, -1.33333)
+scale = Vector2(0.758185, 0.494467)
+shape = SubResource("RectangleShape2D_0nuvn")
+
+[node name="enemy_Gun" type="Marker2D" parent="."]
+position = Vector2(0, 8.10001)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://n7iw0bwggmmn"
+path="res://.godot/imported/start hud.mp3-6cf76cea86eb474f2a57b959de1defc0.mp3str"
+
+[deps]
+
+source_file="res://music/musiche/start hud.mp3"
+dest_files=["res://.godot/imported/start hud.mp3-6cf76cea86eb474f2a57b959de1defc0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

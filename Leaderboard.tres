@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Leaderboard" load_steps=2 format=3 uid="uid://lbtf4epl4ast"]
+
+[ext_resource type="Script" path="res://standings.gd" id="1_01aqj"]
+
+[resource]
+script = ExtResource("1_01aqj")
+scores = [["kk", 4130], ["w", 3350]]

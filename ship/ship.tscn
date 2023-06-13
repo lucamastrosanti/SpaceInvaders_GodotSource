@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://64lkh3mbs0ja"]
+
+[ext_resource type="Script" path="res://ship/ship.gd" id="1_v46fg"]
+[ext_resource type="Texture2D" uid="uid://83r0lrayhy4s" path="res://ship/ship.png" id="1_wq66v"]
+[ext_resource type="Texture2D" uid="uid://bcurvo12v4jbt" path="res://ship/scudo ship.png" id="3_xli68"]
+[ext_resource type="Texture2D" uid="uid://cyk106celysd2" path="res://ship/ship vuota.png" id="3_y44f6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kkyem"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wq66v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xli68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y44f6")
+}],
+"loop": true,
+"name": &"shield",
+"speed": 5.0
+}]
+
+[node name="ship" type="Area2D" groups=["Ship"]]
+script = ExtResource("1_v46fg")
+
+[node name="ship_Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_kkyem")
+speed_scale = 2.0
+
+[node name="ship_CollisionShape" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -36, 32, 14, -32, 14)
+
+[node name="InvincibleTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]

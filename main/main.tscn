@@ -1,0 +1,175 @@
+[gd_scene load_steps=16 format=3 uid="uid://rxs63udx7bwd"]
+
+[ext_resource type="Script" path="res://main/main.gd" id="1_brqeb"]
+[ext_resource type="PackedScene" uid="uid://64lkh3mbs0ja" path="res://ship/ship.tscn" id="2_6isi4"]
+[ext_resource type="Resource" uid="uid://lbtf4epl4ast" path="res://Leaderboard.tres" id="2_ddiyr"]
+[ext_resource type="Resource" uid="uid://d2thmn4ekgs8g" path="res://username.tres" id="3_fokht"]
+[ext_resource type="PackedScene" uid="uid://clifjk7l1anpr" path="res://enemy/group_enemy.tscn" id="4_tetue"]
+[ext_resource type="FontFile" uid="uid://bqyij6n0qhgb2" path="res://hud/3Dventure.ttf" id="5_ur6qx"]
+[ext_resource type="PackedScene" uid="uid://dep02g6g2ecdl" path="res://hud/pauseHud.tscn" id="7_pxjlw"]
+[ext_resource type="Script" path="res://main/HBoxContainer.gd" id="7_qg4yn"]
+[ext_resource type="Texture2D" uid="uid://dnjnpppjbogvp" path="res://hud/pause button.png" id="8_2nxr8"]
+[ext_resource type="AudioStream" uid="uid://cwuuf5pyoubjh" path="res://music/musiche/gameplay.mp3" id="10_4f3tb"]
+[ext_resource type="AudioStream" uid="uid://4kwbxtga2lxr" path="res://music/musiche/countdown.mp3" id="11_syt4k"]
+[ext_resource type="AudioStream" uid="uid://dhlbgbagla5vk" path="res://music/musiche/laser.mp3" id="12_pusen"]
+[ext_resource type="AudioStream" uid="uid://dt7j5mauigq51" path="res://music/musiche/victory.mp3" id="13_7xam4"]
+[ext_resource type="AudioStream" uid="uid://bepo1dsb2nqd6" path="res://music/musiche/ufo.mp3" id="14_fl8ap"]
+[ext_resource type="AudioStream" uid="uid://c8irr072rb1bu" path="res://music/musiche/ship lost.mp3" id="15_uwoij"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_brqeb")
+leaderboard = ExtResource("2_ddiyr")
+nickname = ExtResource("3_fokht")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="ship" parent="." instance=ExtResource("2_6isi4")]
+position = Vector2(597, 575)
+
+[node name="gun" type="Marker2D" parent="ship"]
+position = Vector2(-1, -37)
+
+[node name="group_enemy" parent="." instance=ExtResource("4_tetue")]
+
+[node name="PlayHud" type="CanvasLayer" parent="."]
+
+[node name="username" type="Label" parent="PlayHud"]
+texture_filter = 1
+offset_left = 80.0
+offset_top = 8.0
+offset_right = 198.0
+offset_bottom = 54.0
+theme_override_fonts/font = ExtResource("5_ur6qx")
+theme_override_font_sizes/font_size = 45
+text = "name"
+metadata/_edit_use_anchors_ = true
+
+[node name="scorePoints" type="Label" parent="PlayHud"]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 8.0
+offset_right = 37.0
+offset_bottom = 54.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_ur6qx")
+theme_override_font_sizes/font_size = 45
+text = "SCORE:"
+horizontal_alignment = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="points" type="Label" parent="PlayHud"]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 49.0
+offset_top = 8.0
+offset_right = 169.0
+offset_bottom = 54.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_ur6qx")
+theme_override_font_sizes/font_size = 45
+text = "0"
+horizontal_alignment = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Life" type="Label" parent="PlayHud"]
+texture_filter = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 54.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("5_ur6qx")
+theme_override_font_sizes/font_size = 45
+text = "3"
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseButton" type="Button" parent="PlayHud"]
+texture_filter = 1
+anchors_preset = -1
+anchor_left = 0.007
+anchor_right = 0.056
+anchor_bottom = 0.089
+offset_left = -0.0640001
+offset_right = -32.512
+offset_bottom = -32.672
+scale = Vector2(2.3, 2.3)
+icon = ExtResource("8_2nxr8")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayHud"]
+offset_left = 752.0
+offset_top = 8.0
+offset_right = 1424.0
+offset_bottom = 108.0
+scale = Vector2(0.5, 0.5)
+alignment = 2
+script = ExtResource("7_qg4yn")
+
+[node name="Pause" parent="." instance=ExtResource("7_pxjlw")]
+process_mode = 3
+
+[node name="get_ready" type="Label" parent="."]
+texture_filter = 1
+offset_left = 440.0
+offset_top = 272.0
+offset_right = 723.0
+offset_bottom = 323.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ur6qx")
+theme_override_font_sizes/font_size = 50
+text = "READY_label"
+
+[node name="AgainTimer" type="Timer" parent="get_ready"]
+wait_time = 0.75
+
+[node name="ReadyTimer" type="Timer" parent="get_ready"]
+wait_time = 4.0
+
+[node name="UfoTimer" type="Timer" parent="."]
+
+[node name="PassagesTimer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 0.3
+
+[node name="game_play" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_4f3tb")
+
+[node name="get_readyAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_syt4k")
+
+[node name="ship_laser" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_pusen")
+
+[node name="victory" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_7xam4")
+
+[node name="ufo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_fl8ap")
+
+[node name="ship_los" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_uwoij")
+
+[connection signal="game_over" from="ship" to="." method="_on_ship_game_over"]
+[connection signal="not_immune" from="ship" to="." method="_on_ship_not_immune"]
+[connection signal="on_shoot" from="group_enemy" to="." method="_on_group_enemy_on_shoot"]
+[connection signal="victory" from="group_enemy" to="." method="_on_group_enemy_victory"]
+[connection signal="pressed" from="PlayHud/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="resume" from="Pause" to="." method="_on_pause_resume"]
+[connection signal="timeout" from="get_ready/AgainTimer" to="." method="_on_again_timer_timeout"]
+[connection signal="timeout" from="get_ready/ReadyTimer" to="." method="_on_ready_timer_timeout"]
+[connection signal="timeout" from="UfoTimer" to="." method="_on_ufo_timer_timeout"]
+[connection signal="timeout" from="PassagesTimer" to="." method="_on_passages_timer_timeout"]

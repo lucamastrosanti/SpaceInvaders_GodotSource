@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnuub51leld2m"]
+
+[ext_resource type="Script" path="res://hud/ShipLife.gd" id="1_wb0rp"]
+[ext_resource type="Texture2D" uid="uid://83r0lrayhy4s" path="res://ship/ship.png" id="1_xeufc"]
+
+[node name="ShipLife" type="TextureRect" groups=["ShipLife"]]
+anchors_preset = -1
+anchor_right = 0.087
+anchor_bottom = 0.154
+offset_right = -0.224007
+offset_bottom = 0.207993
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xeufc")
+stretch_mode = 5
+script = ExtResource("1_wb0rp")
