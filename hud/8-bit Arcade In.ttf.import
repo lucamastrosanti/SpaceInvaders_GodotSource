@@ -27,7 +27,25 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[]
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "Nuova configurazione",
+"size": Vector2i(16, 0),
+"variation_embolden": 0.0
+}, {
+"chars": [],
+"glyphs": [],
+"name": "Nuova configurazione",
+"size": Vector2i(16, 0),
+"variation_embolden": null
+}, {
+"chars": [],
+"glyphs": [],
+"name": "Nuova configurazione",
+"size": Vector2i(16, 0),
+"variation_embolden": null
+}]
 language_support={}
 script_support={}
 opentype_features={}

@@ -11,6 +11,7 @@ var charger=0
 var immune=0
 var passages=0
 signal invulnerable
+var hack=0
 
 func _on_ready_timer_timeout():
 	$game_play.play()
@@ -29,6 +30,8 @@ func _on_ready_timer_timeout():
 		shield.position=Vector2(get_viewport_rect().size.x*17.5/20-x*get_viewport_rect().size.x*5/20,get_viewport_rect().size.y*7/9)
 
 func _ready():
+	if nickname.user=="16" or nickname.user=="-10":
+		hack=1
 	$ColorRect.show()
 	$get_readyAudio.play()
 	immune=0
@@ -40,6 +43,7 @@ func _ready():
 	$get_ready.position=Vector2(get_viewport_rect().size.x/2, get_viewport_rect().size.y*0.8/2)-$get_ready.size/2
 	$get_ready/ReadyTimer.start()
 	$group_enemy.connect("game_over",_on_ship_game_over)
+	$ship.connect("game_over",_on_ship_game_over)
 
 func on_damage():
 	if immune==0:
@@ -82,7 +86,7 @@ func shoot():
 		bullet.connect("recharge",on_recharge)
 		bullet.connect("score", on_score)
 		bullet.connect("ufo", ufo_sound)
-		charger=0
+		charger=hack
 
 func ufo_sound():
 	$ufo.play()
@@ -100,13 +104,14 @@ func _on_group_enemy_victory():
 	$victory.play()
 	immune=0
 	$UfoTimer.start()
+	if get_tree()!=null:
+		get_tree().call_group("shield_piece", "queue_free")
+		get_tree().call_group("enemy_bullet", "queue_free")
+		get_tree().call_group("bullet", "queue_free")
+		get_tree().call_group("ShipLife", "queue_free")
 	$group_enemy.start()
 	$group_enemy.hide()
-	get_tree().call_group("shield_piece", "queue_free")
-	get_tree().call_group("enemy_bullet", "queue_free")
-	get_tree().call_group("bullet", "queue_free")
 	$ship.life+=1
-	get_tree().call_group("ShipLife", "queue_free")
 	$PlayHud/HBoxContainer.number=$ship.life
 	$PlayHud/HBoxContainer.spawn()
 	$PlayHud/Life.text=str($ship.life)
@@ -133,7 +138,7 @@ func _on_ufo_timer_timeout():
 	var ufo_child:= ufo.instantiate()
 	var positions=[0,get_viewport_rect().size.x]
 	add_child(ufo_child)
-	ufo_child.position=Vector2(positions.pick_random(),get_viewport_rect().size.y*1/10)
+	ufo_child.position=Vector2(positions.pick_random(),get_viewport_rect().size.y*1.05/10)
 	if ufo_child.position.x>get_viewport_rect().size.x/2:
 		ufo_child.vel=-ufo_child.vel
 	$UfoTimer.set_wait_time(randi_range(20, 40))

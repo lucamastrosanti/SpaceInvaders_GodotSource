@@ -11,15 +11,17 @@ var lines_alive=[]
 var columns_alive=[]
 signal game_over
 signal victory
+var columns=11
+var rows=5
 
 func _ready():
 	start()
 	
 func start():
 	matrix=[]
-	for x in range (11):
+	for x in range (columns):
 		matrix.append([])
-		for y in range (5):
+		for y in range (rows):
 			var baby_enemy = enemy_child.instantiate()
 			add_child(baby_enemy)
 			baby_enemy.show()
@@ -36,12 +38,12 @@ func start():
 			baby_enemy.connect("game_over", on_game_over)
 			matrix[x].append(baby_enemy)
 	_CollisionShape=Vector2(11,5)*enemy_size+Vector2(10,4)*gap_size
-	position=Vector2(get_viewport_rect().size.x/2,get_viewport_rect().size.y/2*2/3)-_CollisionShape/2+enemy_size/2
+	position=Vector2(get_viewport_rect().size.x/2,get_viewport_rect().size.y*1.1/3)-_CollisionShape/2+enemy_size/2
 	$group_enemy_CollisionShape.shape.extents=_CollisionShape/2
 	$group_enemy_CollisionShape.position=Vector2(10*(gap_size.x+enemy_size.x)/2,$group_enemy_CollisionShape.shape.get_rect().size.y/2-enemy_size.y/2)
 	$SliceTimer.wait_time=pow(11,1.5)/14
 	vel=Vector2(get_viewport_rect().size.x/30,0)
-	
+
 func _on_slice_timer_timeout():
 	if position.x+$group_enemy_CollisionShape.position.x+_CollisionShape.x/2+vel.x<get_viewport_rect().size.x and vel.x+$group_enemy_CollisionShape.position.x-_CollisionShape.x/2+position.x>0:
 		position+=vel
@@ -53,9 +55,9 @@ func _on_shoot_timer_timeout():
 	var can_shoot=[]
 	var shooter: Enemy
 	var shooter_gun_position: Vector2
-	for x in range (11):
-		for y in range (5):
-			var elem = matrix[x][4-y]
+	for x in range (columns):
+		for y in range (rows):
+			var elem = matrix[x][rows-1-y]
 			if elem != null:
 				can_shoot.append(elem)
 				break
@@ -66,12 +68,12 @@ func _on_shoot_timer_timeout():
 func on_CollisionShapeCalculator(baby_enemy):
 	columns_alive=[]
 	lines_alive=[]
-	for x in range (11):
-		for y in range (5):
-			var elem = matrix[x][4-y]
+	for x in range (columns):
+		for y in range (rows):
+			var elem = matrix[x][rows-1-y]
 			if elem != null and elem!=baby_enemy:
 				columns_alive.append(x)
-				lines_alive.append(4-y)
+				lines_alive.append(rows-1-y)
 				break
 	if columns_alive==[]:
 		victory.emit()

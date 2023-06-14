@@ -12,9 +12,9 @@ func _ready():
 	limit=polygon[2].distance_to(polygon[1])/2
 
 func _process(delta):
-	vel=0
 	if life==0:
 		game_over.emit()
+	vel=0
 	if Input.is_action_pressed("destra"):
 		vel+=speed
 	if Input.is_action_pressed("sinistra"):

@@ -15,5 +15,6 @@ wait_time = 2.5
 
 [node name="ShootTimer" type="Timer" parent="."]
 
+[connection signal="victory" from="." to="." method="_on_group_enemy_victory"]
 [connection signal="timeout" from="SliceTimer" to="." method="_on_slice_timer_timeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdkq8e47bs0dg"]
+[gd_scene load_steps=4 format=3 uid="uid://bdkq8e47bs0dg"]
 
 [ext_resource type="Script" path="res://leaderboardRow.gd" id="1_asvdw"]
 [ext_resource type="FontFile" uid="uid://oyx0qe5uwtfq" path="res://hud/8-bit Arcade In.ttf" id="1_frbug"]
+[ext_resource type="FontFile" uid="uid://bwnrdwctrst1s" path="res://hud/m04b.TTF" id="3_x10n4"]
 
 [node name="HBoxContainer" type="HBoxContainer"]
 offset_left = 24.0
@@ -16,21 +17,20 @@ script = ExtResource("1_asvdw")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_frbug")
 theme_override_font_sizes/font_size = 50
-text = "hgjghjgfh"
+text = "username"
 vertical_alignment = 1
 
 [node name="separation" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("1_frbug")
 theme_override_font_sizes/font_size = 50
-text = "...................................................."
+text = "................................."
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="score" type="Label" parent="."]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_frbug")
-theme_override_font_sizes/font_size = 50
-text = "2123456"
+theme_override_fonts/font = ExtResource("3_x10n4")
+theme_override_font_sizes/font_size = 25
+text = "9999"
 horizontal_alignment = 2

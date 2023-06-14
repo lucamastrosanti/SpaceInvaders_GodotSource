@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b684iwo35nk4n" path="res://hud/background.png" id="4_7mhh4"]
 [ext_resource type="FontFile" uid="uid://bqyij6n0qhgb2" path="res://hud/3Dventure.ttf" id="4_ipady"]
 [ext_resource type="Texture2D" uid="uid://xuinodxwbgqq" path="res://hud/quit button.png" id="5_4gaj2"]
-[ext_resource type="Texture2D" uid="uid://dymtan18yehpi" path="res://best.png" id="7_w8lvd"]
+[ext_resource type="Texture2D" uid="uid://bx4do0btt7hb7" path="res://trophy_nobest.png" id="7_wvscg"]
 [ext_resource type="AudioStream" uid="uid://n7iw0bwggmmn" path="res://music/musiche/start hud.mp3" id="8_g42tx"]
 
 [node name="Leaderboard" type="CanvasLayer"]
@@ -74,20 +74,21 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 312.0
-offset_top = 48.0
-offset_right = 398.0
-offset_bottom = 128.0
+offset_left = 304.0
+offset_top = 56.0
+offset_right = 920.0
+offset_bottom = 463.0
 rotation = -0.520098
-texture = ExtResource("7_w8lvd")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_wvscg")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-offset_left = 760.0
-offset_top = 7.99997
-offset_right = 846.0
-offset_bottom = 88.0
+offset_left = 728.0
+offset_right = 1344.0
+offset_bottom = 407.0
 rotation = 0.43161
-texture = ExtResource("7_w8lvd")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_wvscg")
 
 [node name="leaderboard" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_g42tx")
