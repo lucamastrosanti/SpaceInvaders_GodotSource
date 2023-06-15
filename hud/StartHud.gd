@@ -2,8 +2,8 @@ extends CanvasLayer
 signal start
 const main: PackedScene =preload("res://main/main.tscn")
 const leaderboard: PackedScene =preload("res://leaderboard.tscn")
-@export var nickname: username
 var passages=0
+var data_file_path="user://Leaderboard.json"
 
 func _ready():
 	$"start hud".play()
@@ -35,8 +35,14 @@ func _on_start_button_pressed():
 
 func _on_name_button_pressed():
 	if $NameHud/LineEdit.text != "":
-		nickname.user=$NameHud/LineEdit.text
-		ResourceSaver.save(nickname,"user://username.tres")
+		var json_file = FileAccess.open(data_file_path,FileAccess.READ)
+		var json_file_text= json_file.get_as_text()
+		var parse= JSON.parse_string(json_file_text)
+		json_file.close()
+		parse["username"]=$NameHud/LineEdit.text
+		json_file = FileAccess.open(data_file_path, FileAccess.WRITE)
+		json_file.store_string(JSON.stringify(parse, "  ", true))
+		json_file.close()
 		get_tree().change_scene_to_packed(main)
 	else:
 		$NameHud/Error.show()
@@ -47,3 +53,5 @@ func _on_passage_timer_timeout():
 
 func _on_leaderboard_button_pressed():
 	get_tree().change_scene_to_packed(leaderboard)
+	
+	

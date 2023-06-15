@@ -5,12 +5,11 @@ const shields_child: PackedScene = preload("res://Shields/shields.tscn")
 const game_over: PackedScene = preload("res://hud/game_over.tscn")
 const main: PackedScene =preload("res://main/main.tscn")
 const ufo: PackedScene =preload("res://ufo/ufo.tscn")
-@export var leaderboard: Leaderboard
-@export var nickname: username
 var charger=0
 var immune=0
 signal invulnerable
 var hack=0
+var data_file_path = "user://Leaderboard.json"
 
 func _on_ready_timer_timeout():
 	$game_play.play()
@@ -28,15 +27,20 @@ func _on_ready_timer_timeout():
 		add_child(shield)
 		shield.position=Vector2(get_viewport_rect().size.x*17.5/20-x*get_viewport_rect().size.x*5/20,get_viewport_rect().size.y*7/9)
 
+
 func _ready():
-	if nickname.user=="16" or nickname.user=="-10":
+	var json_file = FileAccess.open(data_file_path,FileAccess.READ)
+	var json_file_text= json_file.get_as_text()
+	var parse=JSON.parse_string(json_file_text)
+	$PlayHud/username.text=parse["username"]
+	json_file.close()
+	if $PlayHud/username.text=="16" or $PlayHud/username.text=="-10":
 		hack=1
 	$ColorRect.show()
 	$get_readyAudio.play()
 	immune=0
 	$Pause.hide()
 	$get_ready.text="get ready!"
-	$PlayHud/username.text=nickname.user
 	$group_enemy.hide()
 	$get_ready.show()
 	$get_ready.position=Vector2(get_viewport_rect().size.x/2, get_viewport_rect().size.y*0.8/2)-$get_ready.size/2
@@ -141,10 +145,22 @@ func _on_pause_button_pressed():
 	$Pause.show()
 	
 func _on_ship_game_over():
-	leaderboard.add_score($PlayHud/username.text,int($PlayHud/points.text))
-	ResourceSaver.save(leaderboard,"res://Leaderboard.tres")
-	get_tree().change_scene_to_packed(game_over)
+	var json_file = FileAccess.open(data_file_path,FileAccess.READ)
+	var json_file_text= json_file.get_as_text()
+	var parse=JSON.parse_string(json_file_text)
+	json_file.close()
+	
+	var new_json_file={
+		"score"=int($PlayHud/points.text),
+		"username"=$PlayHud/username.text
+	}
+	parse["leaderboard"].append(new_json_file)
 
+	json_file=FileAccess.open(data_file_path,FileAccess.WRITE)
+	json_file.store_string(JSON.stringify(parse," ", true))
+	json_file.close()
+	get_tree().change_scene_to_packed(game_over)
+	
 func _on_pause_resume():
 	$Pause.hide()
 	get_tree().paused=false

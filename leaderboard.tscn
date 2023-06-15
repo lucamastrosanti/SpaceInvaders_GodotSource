@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://x30h1fhbc800"]
+[gd_scene load_steps=8 format=3 uid="uid://x30h1fhbc800"]
 
 [ext_resource type="Script" path="res://leaderboard.gd" id="1_lnse0"]
-[ext_resource type="Resource" uid="uid://lbtf4epl4ast" path="res://Leaderboard.tres" id="2_lp0bq"]
 [ext_resource type="Script" path="res://hud/InfiniteScrollingBackground.gd" id="3_50q30"]
 [ext_resource type="Texture2D" uid="uid://b684iwo35nk4n" path="res://hud/background.png" id="4_7mhh4"]
 [ext_resource type="FontFile" uid="uid://bqyij6n0qhgb2" path="res://hud/3Dventure.ttf" id="4_ipady"]
@@ -11,7 +10,6 @@
 
 [node name="Leaderboard" type="CanvasLayer"]
 script = ExtResource("1_lnse0")
-leaderboard = ExtResource("2_lp0bq")
 
 [node name="InfiniteScrollingBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("3_50q30")

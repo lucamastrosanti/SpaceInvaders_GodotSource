@@ -1,9 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://rxs63udx7bwd"]
+[gd_scene load_steps=16 format=3 uid="uid://rxs63udx7bwd"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_brqeb"]
 [ext_resource type="PackedScene" uid="uid://64lkh3mbs0ja" path="res://ship/ship.tscn" id="2_6isi4"]
-[ext_resource type="Resource" uid="uid://lbtf4epl4ast" path="res://Leaderboard.tres" id="2_ddiyr"]
-[ext_resource type="Resource" uid="uid://d2thmn4ekgs8g" path="res://username.tres" id="3_fokht"]
 [ext_resource type="PackedScene" uid="uid://clifjk7l1anpr" path="res://enemy/group_enemy.tscn" id="4_tetue"]
 [ext_resource type="FontFile" uid="uid://bqyij6n0qhgb2" path="res://hud/3Dventure.ttf" id="5_ur6qx"]
 [ext_resource type="PackedScene" uid="uid://dep02g6g2ecdl" path="res://hud/pauseHud.tscn" id="7_pxjlw"]
@@ -27,8 +25,6 @@ loop = true
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_brqeb")
-leaderboard = ExtResource("2_ddiyr")
-nickname = ExtResource("3_fokht")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1152.0
@@ -174,6 +170,7 @@ stream = ExtResource("15_uwoij")
 [connection signal="on_shoot" from="group_enemy" to="." method="_on_group_enemy_on_shoot"]
 [connection signal="victory" from="group_enemy" to="." method="_on_group_enemy_victory"]
 [connection signal="pressed" from="PlayHud/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="resume" from="Pause" to="." method="_on_pause_resume"]
 [connection signal="timeout" from="get_ready/AgainTimer" to="." method="_on_again_timer_timeout"]
 [connection signal="timeout" from="get_ready/ReadyTimer" to="." method="_on_ready_timer_timeout"]
 [connection signal="timeout" from="UfoTimer" to="." method="_on_ufo_timer_timeout"]

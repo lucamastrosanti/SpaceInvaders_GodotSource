@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="username" load_steps=2 format=3 uid="uid://d2thmn4ekgs8g"]
-
-[ext_resource type="Script" path="res://username.gd" id="1_fmmj7"]
-
-[resource]
-script = ExtResource("1_fmmj7")
-user = "test8000"
