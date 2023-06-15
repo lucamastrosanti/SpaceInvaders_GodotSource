@@ -36,7 +36,7 @@ func _on_start_button_pressed():
 func _on_name_button_pressed():
 	if $NameHud/LineEdit.text != "":
 		nickname.user=$NameHud/LineEdit.text
-		ResourceSaver.save(nickname,"res://username.tres")
+		ResourceSaver.save(nickname,"user://username.tres")
 		get_tree().change_scene_to_packed(main)
 	else:
 		$NameHud/Error.show()

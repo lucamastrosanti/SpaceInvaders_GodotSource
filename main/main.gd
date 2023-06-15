@@ -9,7 +9,6 @@ const ufo: PackedScene =preload("res://ufo/ufo.tscn")
 @export var nickname: username
 var charger=0
 var immune=0
-var passages=0
 signal invulnerable
 var hack=0
 
@@ -66,13 +65,6 @@ func _on_ship_not_immune():
 func _process(_delta):
 	if Input.is_action_pressed("shoot"):
 		shoot()
-	if Input.is_action_pressed("esc") and passages==0:
-		_on_pause_button_pressed()
-		passages=1
-
-func _on_passages_timer_timeout():
-	passages=0
-	$PassagesTimer.stop()
 
 func on_recharge():
 	charger=1
@@ -147,14 +139,13 @@ func _on_ufo_timer_timeout():
 func _on_pause_button_pressed(): 
 	get_tree().paused=true 
 	$Pause.show()
-	$Pause/PassagesTimer.start()
 	
 func _on_ship_game_over():
 	leaderboard.add_score($PlayHud/username.text,int($PlayHud/points.text))
-	ResourceSaver.save(leaderboard, "res://Leaderboard.tres")
+	ResourceSaver.save(leaderboard,"res://Leaderboard.tres")
 	get_tree().change_scene_to_packed(game_over)
 
 func _on_pause_resume():
 	$Pause.hide()
 	get_tree().paused=false
-	$PassagesTimer.start()
+

@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_01aqj")
-scores = [["theprogrammer", 16], ["RedFoxy", -10], ["test8000", 2890]]
+scores = [["theprogrammer", 16], ["RedFoxy", -10]]
