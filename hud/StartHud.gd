@@ -53,5 +53,9 @@ func _on_passage_timer_timeout():
 
 func _on_leaderboard_button_pressed():
 	get_tree().change_scene_to_packed(leaderboard)
-	
-	
+
+func _on_leti_pressed():
+	OS.shell_open("https://github.com/letilau")
+
+func _on_luca_pressed():
+	OS.shell_open("https://github.com/lucamastrosanti")

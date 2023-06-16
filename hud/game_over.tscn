@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://bqfrqp3er6lo0"]
 
-[ext_resource type="Script" path="res://hud/game_over.gd" id="1_7ho2c"]
+[ext_resource type="Script" path="res://hud/game_over.gd" id="1_0bpsh"]
 [ext_resource type="FontFile" uid="uid://bqyij6n0qhgb2" path="res://hud/3Dventure.ttf" id="1_igyn8"]
 [ext_resource type="Texture2D" uid="uid://xuinodxwbgqq" path="res://hud/quit button.png" id="3_tbfpe"]
 [ext_resource type="Texture2D" uid="uid://w0wobp7jg7cm" path="res://hud/restart.png" id="4_603o8"]
 [ext_resource type="AudioStream" uid="uid://ei5oux24ahgd" path="res://music/musiche/game_over.mp3" id="5_nrrkn"]
 
 [node name="Game_over" type="CanvasLayer"]
-script = ExtResource("1_7ho2c")
+script = ExtResource("1_0bpsh")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1152.0
