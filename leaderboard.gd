@@ -1,5 +1,4 @@
 extends CanvasLayer
-const start_hud: PackedScene=preload("res://hud/start_hud.tscn")
 const score_row: PackedScene=preload("res://leaderboardRow.tscn")
 var data_file_path="user://Leaderboard.json"
 
@@ -24,4 +23,4 @@ func _ready():
 		$Container/Panel.add_child(score_row_child)
 
 func _on_back_button_pressed():
-	get_tree().change_scene_to_packed(start_hud)
+	get_tree().change_scene_to_file("res://hud/start_hud.tscn")
