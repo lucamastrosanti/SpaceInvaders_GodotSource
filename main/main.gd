@@ -34,8 +34,8 @@ func _ready():
 	var parse=JSON.parse_string(json_file_text)
 	$PlayHud/username.text=parse["username"]
 	json_file.close()
-	if $PlayHud/username.text=="16" or $PlayHud/username.text=="-10":
-		hack=1
+	if "16" in $PlayHud/username.text or "-10" in $PlayHud/username.text:
+		hack=1 #now if the score of the programmers is in the name of the player hack more is activated
 	$ColorRect.show()
 	$get_readyAudio.play()
 	immune=0
@@ -145,23 +145,39 @@ func _on_pause_button_pressed():
 	$Pause.show()
 	
 func _on_ship_game_over():
-	var json_file = FileAccess.open(data_file_path,FileAccess.READ)
-	var json_file_text= json_file.get_as_text()
-	var parse=JSON.parse_string(json_file_text)
+	#ora la funzione game_over aggiorna il punteggio se il nome è già presente nel json, altrimenti lo aggiunge
+	var json_file = FileAccess.open(data_file_path, FileAccess.READ)
+	var json_file_text = json_file.get_as_text()
+	var parse = JSON.parse_string(json_file_text)
 	json_file.close()
 	
-	var new_json_file={
-		"score"=int($PlayHud/points.text),
-		"username"=$PlayHud/username.text
-	}
-	parse["leaderboard"].append(new_json_file)
+	var current_score = int($PlayHud/points.text)
+	var current_username = $PlayHud/username.text
+	var player_found = false
+	
+	for entry in parse["leaderboard"]:
+		if entry["username"] == current_username:
+			player_found = true
+			
+			if current_score > entry["score"]:
+				entry["score"] = current_score
+				
+			break
+			
+	
+	if not player_found:
+		var new_entry = {
+			"score": current_score,
+			"username": current_username
+		}
+		parse["leaderboard"].append(new_entry)
 
-	json_file=FileAccess.open(data_file_path,FileAccess.WRITE)
-	json_file.store_string(JSON.stringify(parse," ", true))
+	json_file = FileAccess.open(data_file_path, FileAccess.WRITE)
+	json_file.store_string(JSON.stringify(parse, "\t", true)) 
 	json_file.close()
+	
 	get_tree().change_scene_to_packed(game_over)
 	
 func _on_pause_resume():
 	$Pause.hide()
 	get_tree().paused=false
-

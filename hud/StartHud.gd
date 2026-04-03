@@ -1,4 +1,5 @@
 extends CanvasLayer
+@warning_ignore("unused_signal")
 signal start
 const main: PackedScene =preload("res://main/main.tscn")
 const leaderboard: PackedScene =preload("res://leaderboard.tscn")
@@ -8,10 +9,12 @@ var data_file_path="user://Leaderboard.json"
 func _ready():
 	$"start hud".play()
 	$NameHud.hide()
+	$HowToPlay.hide()
 	$Credits.hide()
 	$Menu/ScoreIndex/enemy3.play()
 	$Menu/ScoreIndex/enemy2.play()
 	$Menu/ScoreIndex/enemy1.play()
+	$Menu/ScoreIndex/ufo2.play() #now ufo is an animated sprite
 	
 func _process(_delta):
 	if Input.is_action_pressed("enter") and passages==0:
@@ -23,15 +26,25 @@ func _process(_delta):
 func _on_credits_button_pressed():
 	$Credits.show()
 	$Menu.hide()
+	$HowToPlay.hide()
 	
 func _on_esc_button_pressed():
 	$Credits.hide()
 	$Menu.show()
+	$HowToPlay.hide()
 
 func _on_start_button_pressed():
 	$PassageTimer.start()
 	$NameHud.show()
 	$Menu.hide()
+
+func _on_how_to_play_button_pressed():
+	$Menu.hide()
+	$HowToPlay.show()
+	
+func _on_esc_htp_pressed():
+	$Menu.show()
+	$HowToPlay.hide()
 
 func _on_name_button_pressed():
 	if $NameHud/LineEdit.text != "":
