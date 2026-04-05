@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dep02g6g2ecdl"]
+[gd_scene format=3 uid="uid://dep02g6g2ecdl"]
 
-[ext_resource type="Script" path="res://hud/pauseHud.gd" id="1_36uil"]
+[ext_resource type="Script" uid="uid://bmwjvvaoh1g6t" path="res://hud/pauseHud.gd" id="1_36uil"]
 [ext_resource type="FontFile" uid="uid://bqyij6n0qhgb2" path="res://hud/3Dventure.ttf" id="2_ddbsn"]
 [ext_resource type="Texture2D" uid="uid://cioc1k0vkrmsb" path="res://hud/resume button.png" id="3_18vrs"]
 [ext_resource type="Texture2D" uid="uid://xuinodxwbgqq" path="res://hud/quit button.png" id="4_6l3ow"]
-[ext_resource type="FontFile" uid="uid://oyx0qe5uwtfq" path="res://hud/8-bit Arcade In.ttf" id="5_tm0i8"]
+[ext_resource type="FontFile" uid="uid://7sn1xigldf56" path="res://hud/PressStart2P-vaV7.ttf" id="5_tg15g"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_44ouc"]
 action = &"esc"
@@ -12,10 +12,10 @@ action = &"esc"
 [sub_resource type="Shortcut" id="Shortcut_5g4as"]
 events = [SubResource("InputEventAction_44ouc")]
 
-[node name="Pause" type="CanvasLayer"]
+[node name="Pause" type="CanvasLayer" unique_id=1783007480]
 script = ExtResource("1_36uil")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=1903394768]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.65098, 0.623529, 0.576471, 0.835294)
 
-[node name="ResumeButton" type="Button" parent="."]
+[node name="ResumeButton" type="Button" parent="." unique_id=1693108008]
 anchors_preset = -1
 anchor_left = 0.312
 anchor_top = 0.432
@@ -43,7 +43,7 @@ icon = ExtResource("3_18vrs")
 flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="QuitButton" type="Button" parent="."]
+[node name="QuitButton" type="Button" parent="." unique_id=1565998190]
 anchors_preset = -1
 anchor_left = 0.514
 anchor_top = 0.42
@@ -61,15 +61,15 @@ icon = ExtResource("4_6l3ow")
 flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="QuitButton"]
+[node name="Label" type="Label" parent="QuitButton" unique_id=1674408058]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 48.0
-offset_right = 242.0
-offset_bottom = 79.0
-theme_override_fonts/font = ExtResource("5_tm0i8")
-theme_override_font_sizes/font_size = 20
-text = "you'll lose your progress"
+offset_top = 56.0
+offset_right = 258.0
+offset_bottom = 87.0
+theme_override_fonts/font = ExtResource("5_tg15g")
+theme_override_font_sizes/font_size = 9
+text = "*you'll lose your progress"
 
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

@@ -47,7 +47,17 @@ func _on_esc_htp_pressed():
 	$HowToPlay.hide()
 
 func _on_name_button_pressed():
-	if $NameHud/LineEdit.text != "":
+	var userName = $NameHud/LineEdit.text
+	
+	if userName == "": # as before, stop without username
+		$NameHud/Error.text="*You need to choose a username*"
+		$NameHud/Error.show()
+		
+	elif userName.length() > 9: #limits the name lenght to 9 for graphics reason
+		$NameHud/Error.text="*You can put maximum 9 characters*" 
+		$NameHud/Error.show()
+	
+	elif userName != "": #if the username is correct
 		var json_file = FileAccess.open(data_file_path,FileAccess.READ)
 		var json_file_text= json_file.get_as_text()
 		var parse= JSON.parse_string(json_file_text)
@@ -57,9 +67,8 @@ func _on_name_button_pressed():
 		json_file.store_string(JSON.stringify(parse, "  ", true))
 		json_file.close()
 		get_tree().change_scene_to_packed(main)
-	else:
-		$NameHud/Error.show()
-		
+
+
 func _on_passage_timer_timeout():
 	passages=1
 	$PassageTimer.stop()

@@ -4,9 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://64lkh3mbs0ja" path="res://ship/ship.tscn" id="2_6isi4"]
 [ext_resource type="PackedScene" uid="uid://clifjk7l1anpr" path="res://enemy/group_enemy.tscn" id="4_tetue"]
 [ext_resource type="FontFile" uid="uid://bqyij6n0qhgb2" path="res://hud/3Dventure.ttf" id="5_ur6qx"]
+[ext_resource type="Texture2D" uid="uid://cd28h4u4d5cg7" path="res://main/left.png" id="7_5xyti"]
 [ext_resource type="PackedScene" uid="uid://dep02g6g2ecdl" path="res://hud/pauseHud.tscn" id="7_pxjlw"]
 [ext_resource type="Script" uid="uid://bbmfb0j13tqca" path="res://main/HBoxContainer.gd" id="7_qg4yn"]
 [ext_resource type="Texture2D" uid="uid://dnjnpppjbogvp" path="res://hud/pause button.png" id="8_2nxr8"]
+[ext_resource type="Texture2D" uid="uid://dfpu8gx4x0528" path="res://main/right.png" id="8_n3o0a"]
+[ext_resource type="Texture2D" uid="uid://bvamkd4sx1jrm" path="res://main/shoot w.png" id="9_s758e"]
 [ext_resource type="AudioStream" uid="uid://4kwbxtga2lxr" path="res://music/musiche/countdown.mp3" id="11_syt4k"]
 [ext_resource type="AudioStream" uid="uid://dhlbgbagla5vk" path="res://music/musiche/laser.mp3" id="12_pusen"]
 [ext_resource type="AudioStream" uid="uid://dt7j5mauigq51" path="res://music/musiche/victory.mp3" id="13_7xam4"]
@@ -57,9 +60,9 @@ texture_filter = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -120.0
+offset_left = -214.0
 offset_top = 8.0
-offset_right = 37.0
+offset_right = -56.0
 offset_bottom = 54.0
 grow_horizontal = 2
 size_flags_horizontal = 4
@@ -74,9 +77,9 @@ texture_filter = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 49.0
+offset_left = -44.5
 offset_top = 8.0
-offset_right = 169.0
+offset_right = 75.5
 offset_bottom = 54.0
 grow_horizontal = 2
 size_flags_horizontal = 4
@@ -124,6 +127,43 @@ offset_bottom = 108.0
 scale = Vector2(0.5, 0.5)
 alignment = 2
 script = ExtResource("7_qg4yn")
+
+[node name="LevelLabel" type="Label" parent="PlayHud" unique_id=486404417]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 104.0
+offset_top = 8.0
+offset_right = 262.0
+offset_bottom = 54.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_ur6qx")
+theme_override_font_sizes/font_size = 45
+text = "LVL: "
+
+[node name="TouchLeft" type="TouchScreenButton" parent="PlayHud" unique_id=1619030693]
+texture_filter = 1
+position = Vector2(27, 557.00006)
+scale = Vector2(0.035, 0.035)
+texture_normal = ExtResource("7_5xyti")
+action = "sinistra"
+visibility_mode = 1
+
+[node name="TouchRight" type="TouchScreenButton" parent="PlayHud" unique_id=426941435]
+position = Vector2(132, 557)
+scale = Vector2(0.035, 0.035)
+texture_normal = ExtResource("8_n3o0a")
+action = "destra"
+visibility_mode = 1
+
+[node name="TouchShoot" type="TouchScreenButton" parent="PlayHud" unique_id=1862408905]
+position = Vector2(1080, 546)
+rotation = 0.64751714
+scale = Vector2(0.085, 0.085)
+texture_normal = ExtResource("9_s758e")
+action = "shoot"
+visibility_mode = 1
 
 [node name="Pause" parent="." unique_id=1031037713 instance=ExtResource("7_pxjlw")]
 process_mode = 3
