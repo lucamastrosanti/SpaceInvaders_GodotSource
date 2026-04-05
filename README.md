@@ -7,9 +7,9 @@ The project has been fixed and updated to Godot 4.
 
 ## 🚀 Play Now!
 
-You can play the HTML5 version directly in your browser, hosted on itch.io.
+You can play the HTML5 version directly in your browser, hosted on our private server.
 
-**[CLICK HERE TO PLAY (on itch.io)](https://lucamastrosanti.itch.io/space-invaders-remastered)**
+**[CLICK HERE TO PLAY ONLINE](https://letilau-spaceinvaders.duckdns.org/)**
 
 ---
 
