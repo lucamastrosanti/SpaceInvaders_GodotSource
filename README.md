@@ -17,4 +17,4 @@ You can play the HTML5 version directly in your browser, hosted on our private s
 
 If you prefer to download the Windows executable or the zipped HTML version, you can find them on the official "Releases" page.
 
-**[CLICK HERE FOR DOWNLOADS (from GitHub Releases)](https://github.com/lucamastrosanti/SpaceInvaders_GodotSource/releases/tag/latest)**
+**[CLICK HERE FOR DOWNLOADS (from GitHub Releases)](https://github.com/lucamastrosanti/SpaceInvaders_GodotSource/releases/)**
